@@ -17,6 +17,15 @@ var _is_collected: bool = false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+	_ensure_sfx_bus()
+
+
+func _ensure_sfx_bus() -> void:
+	if AudioServer.get_bus_index("SFX") == -1:
+		AudioServer.add_bus()
+		AudioServer.set_bus_name(AudioServer.bus_count - 1, "SFX")
+	if _sfx_player:
+		_sfx_player.bus = &"SFX"
 
 
 func _process(delta: float) -> void:
@@ -50,11 +59,20 @@ func _play_crystal_chime() -> void:
 	if not _sfx_player:
 		return
 
+	_ensure_sfx_bus()
+
+	var sfx_idx := AudioServer.get_bus_index("SFX")
+	if sfx_idx != -1 and AudioServer.is_bus_mute(sfx_idx):
+		await get_tree().create_timer(0.48).timeout
+		return
+
 	var generator := AudioStreamGenerator.new()
 	generator.mix_rate = 44100.0
 	generator.buffer_length = 0.55
+
+	_sfx_player.stop()
+	_sfx_player.bus = &"SFX"
 	_sfx_player.stream = generator
-	_sfx_player.bus = "SFX"
 	_sfx_player.play()
 
 	var playback: AudioStreamGeneratorPlayback = _sfx_player.get_stream_playback()
