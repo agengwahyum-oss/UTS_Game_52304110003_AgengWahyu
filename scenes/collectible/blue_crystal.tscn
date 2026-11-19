@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dmde46c5vdi4e"]
+
+[ext_resource type="Script" uid="uid://cy3lvtbae8q0c" path="res://scenes/collectible/blue_crystal.gd" id="1_8rbda"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqsym"]
+albedo_color = Color(0, 0.6, 1, 1)
+emission_enabled = true
+emission = Color(0, 0.46666667, 1, 1)
+emission_energy_multiplier = 1.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_crx7y"]
+material = SubResource("StandardMaterial3D_rqsym")
+radius = 0.45
+height = 1.2
+radial_segments = 4
+rings = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_crx7y"]
+radius = 0.8
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_6p7e2"]
+buffer_length = 0.6
+
+[node name="BlueCrystal" type="Area3D" unique_id=1779068060]
+script = ExtResource("1_8rbda")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=454960467]
+mesh = SubResource("SphereMesh_crx7y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1766783950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26556993, -0.87014616, 0.39659184)
+shape = SubResource("SphereShape3D_crx7y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1806577977]
+stream = SubResource("AudioStreamGenerator_6p7e2")
+bus = &"SFX "
