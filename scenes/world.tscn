@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://begp0f14w1nfq"]
+
+[ext_resource type="Script" uid="uid://ddiri3nbglmj2" path="res://scenes/world.gd" id="1_71j4m"]
+[ext_resource type="PackedScene" uid="uid://yhitw6mnt1ps" path="res://player.tscn" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://dyrawsca1tpbq" path="res://player.gd" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://wuscckfw5ij0" path="res://scenes/ui/hud.tscn" id="4_qfnet"]
+[ext_resource type="PackedScene" uid="uid://dmde46c5vdi4e" path="res://scenes/collectible/blue_crystal.tscn" id="5_i7141"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqsym"]
+size = Vector3(30, 0.5, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqmkc"]
+size = Vector3(30, 0.5, 30)
+
+[sub_resource type="Environment" id="Environment_crx7y"]
+background_mode = 1
+background_color = Color(0.39215687, 0.58431375, 1, 1)
+
+[node name="World" type="Node3D" unique_id=1072357509]
+script = ExtResource("1_71j4m")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=265687003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=967470794]
+mesh = SubResource("BoxMesh_rqsym")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=2100506999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_xqmkc")
+
+[node name="Player" parent="." unique_id=1291664501 instance=ExtResource("1_nnsk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18869168, 0)
+script = ExtResource("2_rwgxs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=834347637]
+transform = Transform3D(0.8660254, 0.35355338, -0.35355338, 0, 0.70710677, 0.70710677, 0.5, -0.6123724, 0.6123724, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=613128231]
+environment = SubResource("Environment_crx7y")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1371696644]
+
+[node name="HUD" parent="CanvasLayer" unique_id=34323153 instance=ExtResource("4_qfnet")]
+
+[node name="BlueCrystal" parent="." unique_id=1779068060 instance=ExtResource("5_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -3)
+
+[node name="BlueCrystal2" parent="." unique_id=2083464108 instance=ExtResource("5_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.8, -3)
+
+[node name="BlueCrystal3" parent="." unique_id=1254798913 instance=ExtResource("5_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.8, -3)
+
+[node name="BlueCrystal4" parent="." unique_id=1599994435 instance=ExtResource("5_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.8, 2)
+
+[node name="BlueCrystal5" parent="." unique_id=1821095816 instance=ExtResource("5_i7141")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.8, 2)

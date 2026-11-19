@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://wuscckfw5ij0"]
+
+[ext_resource type="Theme" uid="uid://ydsi7x2gwuax" path="res://scenes/ui/main_theme.tres" id="1_0mwgc"]
+[ext_resource type="Script" uid="uid://jxqvwek1the" path="res://scenes/ui/hud.gd" id="2_hqnrr"]
+
+[node name="HUD" type="Control" unique_id=34323153]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0mwgc")
+script = ExtResource("2_hqnrr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1052683012]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 120.0
+offset_bottom = 53.0
+grow_horizontal = 2
+mouse_filter = 2
+script = ExtResource("2_hqnrr")
+
+[node name="BoostLabel" type="Label" parent="VBoxContainer" unique_id=233095009]
+layout_mode = 2
+text = "Speed Boost (+20%): 5.0s"
+
+[node name="BoostBar" type="ProgressBar" parent="VBoxContainer" unique_id=2095321685]
+custom_minimum_size = Vector2(240, 26)
+layout_mode = 2
+mouse_filter = 2
+max_value = 5.0
+value = 5.0
