@@ -17,26 +17,6 @@ Indikator Speed Boost: Menampilkan ProgressBar dan sisa waktu hitung mundur (Spe
 Panel Pengaturan Audio (Tab): Membuka/menutup panel pengaturan di tengah layar sekaligus menjeda pergerakan kamera agar slider mudah diatur.
 Slider Volume SFX (0%–100%, kelipatan 5%): Mengatur volume bus SFX secara real-time menggunakan kurva desibel perseptual (-60 dB hingga   dB).
 Pintasan Cepat Mute (M): Membisukan (mute) atau mengaktifkan kembali (unmute) bus SFX seketika.
-Struktur Proyek
-\\	ext
-res://
-├── scenes/
-│   ├── collectible/
-│   │   ├── blue_crystal.gd
-│   │   └── blue_crystal.tscn
-│   ├── player/
-│   │   ├── player.gd
-│   │   └── player.tscn
-│   ├── ui/
-│   │   ├── hud.gd
-│   │   └── hud.tscn
-│   └── world/
-│       ├── world.gd
-│       └── world.tscn
-├── default_bus_layout.tres
-├── project.godot
-└── README.md
-\\
 Cara Menjalankan Proyek
 Buka Godot Engine 4.x (versi 4.3 atau lebih baru).
 Klik Import, arahkan ke folder proyek ini, dan pilih file project.godot.
